@@ -8,6 +8,12 @@
   <name>HRMMobileService</name>
   <url>http://maven.apache.org</url>
   <dependencies>
+  	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-aop</artifactId>
+		<version>4.0.2.RELEASE</version>
+		<scope>compile</scope>
+		</dependency>
     <dependency>
 		<groupId>junit</groupId>
 		<artifactId>junit</artifactId>

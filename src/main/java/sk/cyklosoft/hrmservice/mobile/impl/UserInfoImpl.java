@@ -1,19 +1,22 @@
 package sk.cyklosoft.hrmservice.mobile.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import sk.cyklosoft.hrmservice.config.annotation.RestEndpoint;
 import sk.cyklosoft.hrmservice.data.UserResponseData;
 import sk.cyklosoft.hrmservice.mobile.UserInfo;
 import sk.cyklosoft.hrmservice.service.UserService;
 import sk.cyklosoft.hrmservice.vo.UserVO;
 
-@Controller
+
+@RestEndpoint
 public class UserInfoImpl implements UserInfo {
     @Autowired
     UserService userService;
@@ -29,9 +32,9 @@ public class UserInfoImpl implements UserInfo {
     @Override
     @RequestMapping(value = "/userdetail/{username}", method = RequestMethod.GET)
 	public @ResponseBody
-	UserResponseData getUserDetail(@PathVariable String username) {
+	ResponseEntity<UserResponseData> getUserDetail(@PathVariable String username) {
     	UserResponseData response = userService.getUserDetail(username);
-        return response;
+    	return new ResponseEntity<UserResponseData>(response, HttpStatus.OK);
     }
 	
 	@Override

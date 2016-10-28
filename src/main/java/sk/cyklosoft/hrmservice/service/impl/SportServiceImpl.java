@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import sk.cyklosoft.hrmservice.comparator.ComparatorFactory;
 import sk.cyklosoft.hrmservice.comparator.HrmAvgAscComparator;
 import sk.cyklosoft.hrmservice.comparator.HrmAvgDescComparator;
 import sk.cyklosoft.hrmservice.comparator.HrmMaxAscComparator;
@@ -131,28 +132,10 @@ public class SportServiceImpl implements SportService {
 		sportActivity.setHrm(hrm);
 		sportActivityList.add(sportActivity);
 //sort		
-		Collections.sort(sportActivityList, getComparator(orderBy));
+		ComparatorFactory comparatorFactory = new ComparatorFactory();
+		Collections.sort(sportActivityList, comparatorFactory.getComparator(orderBy));
 		result.setSportActivity(sportActivityList);
 		return result;
-	}
-
-	private Comparator<? super SportActivity> getComparator(OrderByType orderBy) {
-		Comparator<SportActivity> comparator = null;
-		switch(orderBy) {
-			case HRM_AVG_ASC:
-				comparator =  new HrmAvgAscComparator();	
-				break;
-			case HRM_AVG_DESC:
-				comparator =  new HrmAvgDescComparator();	
-				break;
-			case HRM_MAX_ASC:
-				comparator =   new HrmMaxAscComparator();	
-				break;
-			case HRM_MAX_DESC:
-				comparator =   new HrmMaxDescComparator();	
-				break;
-		}
-		return comparator;
 	}
 
 /**

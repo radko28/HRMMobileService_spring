@@ -1,13 +1,13 @@
 package sk.cyklosoft.hrmservice.mobile.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import sk.cyklosoft.hrmservice.config.annotation.RestEndpoint;
 import sk.cyklosoft.hrmservice.mobile.UserSport;
 import sk.cyklosoft.hrmservice.service.SportService;
 import sk.cyklosoft.hrmservice.service.UserService;
@@ -16,7 +16,7 @@ import sk.cyklosoft.hrmservice.util.SportType;
 import sk.cyklosoft.hrmservice.vo.HrmVO;
 import sk.cyklosoft.hrmservice.vo.SportActivityList;
 
-@Controller
+@RestEndpoint
 public class UserSportImpl implements UserSport {
 	
 	@Autowired

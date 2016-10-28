@@ -4,10 +4,16 @@
      <!-- The definition of the Root Spring Container shared by all Servlets and Filters -->
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>
-        /WEB-INF/applicationContextRESTful.xml
-          </param-value>
+        	<param-value>
+        		/WEB-INF/applicationContextRESTful.xml
+        		/WEB-INF/applicationContextWeb.xml
+          	</param-value>
     </context-param>
+    
+    <context-param>
+		<param-name>spring.profiles.active</param-name>
+		<param-value>development</param-value>
+	</context-param>
   
   <servlet>
     <servlet-name>HRMMobileService</servlet-name>

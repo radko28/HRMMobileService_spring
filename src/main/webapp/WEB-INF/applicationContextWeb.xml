@@ -12,26 +12,29 @@
 		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.2.xsd">
 		
 		
-	<context:component-scan base-package="sk.cyklosoft.hrmservice.mobile" >
-  		<context:include-filter type="annotation" expression="sk.cyklosoft.hrmservice.config.annotation.RestEndpoint" />
-  		<context:exclude-filter type="annotation" expression="sk.cyklosoft.hrmservice.config.annotation.WebController" />
-	</context:component-scan>
+	<mvc:annotation-driven/>
+	<mvc:view-controller path="/" view-name="index"/>
+	
+		
+		<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+    		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
+    		<property name="prefix" value="/WEB-INF/views/" />
+    		<property name="suffix" value=".jsp" />
+		</bean>
+		
 	<context:component-scan base-package="sk.cyklosoft.hrmservice.web" >
 		<context:include-filter type="annotation" expression="sk.cyklosoft.hrmservice.config.annotation.WebController" />
   		<context:exclude-filter type="annotation" expression="sk.cyklosoft.hrmservice.config.annotation.RestEndpoint" />
 	</context:component-scan>
 	
-	<context:component-scan base-package="sk.cyklosoft.hrmservice.service" >
-  		<context:include-filter type="annotation" expression="sk.cyklosoft.hrmservice.config.annotation.RestEndpoint" />
+	<!-- context:component-scan base-package="sk.cyklosoft.hrmservice.service" >
   		<context:include-filter type="annotation" expression="sk.cyklosoft.hrmservice.config.annotation.WebController" />
 	</context:component-scan>
 	<context:component-scan base-package="sk.cyklosoft.hrmservice.dao" >
-  		<context:include-filter type="annotation" expression="sk.cyklosoft.hrmservice.config.annotation.RestEndpoint" />
   		<context:include-filter type="annotation" expression="sk.cyklosoft.hrmservice.config.annotation.WebController" />
-	</context:component-scan>
+	</context:component-scan-->
 	
-	
-		<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<!--bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         	 <property name="driverClassName">
             	<value>${jdbc.driver.className}</value>
         	</property>
@@ -83,6 +86,6 @@
 	
     <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
         <property name="validationMessageSource" ref="messageSource"/>
-  	</bean>
+  	</bean-->
 		
 </beans>		

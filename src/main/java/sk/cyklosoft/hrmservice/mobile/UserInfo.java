@@ -1,5 +1,6 @@
 package sk.cyklosoft.hrmservice.mobile;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,7 +17,7 @@ public interface UserInfo {
 	public @ResponseBody void registerUser(@RequestBody UserVO user);
 
 	@RequestMapping(value = "/userdetail/{username}", method = RequestMethod.GET)
-    public @ResponseBody UserResponseData getUserDetail(@PathVariable String username);
+    public @ResponseBody ResponseEntity<UserResponseData> getUserDetail(@PathVariable String username);
 	
 	@RequestMapping(value = "/{username}/{birthdate}/{weight}/{lenght}", method = RequestMethod.POST)
     public @ResponseBody void setUserDetail(@PathVariable String username, @PathVariable String birthdate,
