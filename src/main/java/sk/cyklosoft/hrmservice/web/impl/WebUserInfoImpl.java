@@ -14,6 +14,6 @@ import sk.cyklosoft.hrmservice.web.WebUserInfo;
 public class WebUserInfoImpl implements WebUserInfo {
 	@RequestMapping(value = {"/","/index"}, method = RequestMethod.GET)
     public String getView(Model model, Locale locale) {
-		return "index";
+		return "homeView";
     }
 }
