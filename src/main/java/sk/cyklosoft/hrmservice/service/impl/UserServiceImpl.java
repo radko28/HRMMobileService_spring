@@ -73,4 +73,22 @@ public class UserServiceImpl implements UserService {
 		
 	}
 
+	@Override
+	public List<UserVO> findAllUsers() {
+        List<User> userList = userDao.findAllUsers();
+        // copy
+         List<UserVO> result = new ArrayList<UserVO>();
+        for (User user : userList) {
+            result.add(user.copy());
+        }
+        return result;
+	}
+
+	@Override
+	public String getWholeNameByUsername(String string) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
 }

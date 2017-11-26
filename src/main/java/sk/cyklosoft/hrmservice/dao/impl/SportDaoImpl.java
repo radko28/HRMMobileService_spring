@@ -87,4 +87,10 @@ public class SportDaoImpl extends CommonDao implements SportDao {
 		
 	}
 
+	@Override
+	public HRMData getCurrentHRM(String username, SportType sportType) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

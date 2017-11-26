@@ -13,6 +13,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import sk.cyklosoft.hrmservice.util.SportType;
+import sk.cyklosoft.hrmservice.vo.UserVO;
 
 @Entity
 @Table(name = "USERS")
@@ -48,6 +49,10 @@ public class User implements Serializable {
    
     @Column(name = "currentActivity", nullable = true)
     private SportType currentActivity;
+    
+    public UserVO copy() {
+        return new UserVO(userId, username, firstname, lastname, password);
+    }
 
 	public Long getUserId() {
 		return userId;

@@ -1,5 +1,7 @@
 package sk.cyklosoft.hrmservice.dao;
 
+import java.util.List;
+
 import sk.cyklosoft.hrmservice.model.User;
 import sk.cyklosoft.hrmservice.util.SportType;
 
@@ -16,5 +18,7 @@ public interface UserDao {
 	void updateUser(String username, SportType sportType);
 
 	void delete(String username);
+
+	List<User> findAllUsers();
 
 }

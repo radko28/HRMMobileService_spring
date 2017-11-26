@@ -5,9 +5,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate3.HibernateTemplate;
 
 public class CommonDao {
-	 protected HibernateTemplate hibernateTemplate = null;
+	 @SuppressWarnings("deprecation")
+	protected HibernateTemplate hibernateTemplate = null;
 
-	 @Autowired
+	 @SuppressWarnings("deprecation")
+	@Autowired
 	 public void setSessionFactory(SessionFactory sessionFactory) {
 		 hibernateTemplate = new HibernateTemplate(sessionFactory);
 	 }

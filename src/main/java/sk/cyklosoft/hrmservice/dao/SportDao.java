@@ -21,5 +21,7 @@ public interface SportDao {
 	HRMData getTrainingDataIndoorCyclo(String username, SportType indoorCycling);
 
 	List<HRMData> getTrainingStatisticList(String username, SportType sportType, DateTime dateFrom, DateTime dateTo);
+	
+	HRMData getCurrentHRM(String username, SportType sportType);
 
 }

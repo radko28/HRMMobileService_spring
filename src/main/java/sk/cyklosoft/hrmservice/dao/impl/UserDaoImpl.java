@@ -1,6 +1,7 @@
 package sk.cyklosoft.hrmservice.dao.impl;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
@@ -13,6 +14,7 @@ import sk.cyklosoft.hrmservice.dao.UserDao;
 import sk.cyklosoft.hrmservice.model.User;
 import sk.cyklosoft.hrmservice.util.SportType;
 
+@SuppressWarnings("deprecation")
 @Repository("userDao")
 public class UserDaoImpl extends CommonDao implements UserDao {
 
@@ -71,6 +73,21 @@ public class UserDaoImpl extends CommonDao implements UserDao {
 			}
 		});
 		
+	}
+
+	@Override
+	public List<User> findAllUsers() {
+        @SuppressWarnings("unchecked")
+        List<User> result = hibernateTemplate.execute(new HibernateCallback<List<User>>() {
+
+            @Override
+            public List<User> doInHibernate(Session session) throws HibernateException, SQLException {
+                Criteria criteria = session.createCriteria(User.class);
+                return (List<User>)criteria.list();
+            }
+        });
+
+        return result;
 	}
 
 

@@ -1,0 +1,147 @@
+HRMMobileService
+WEB
+http://localhost:8080/HRMMobileService/
+
+
+Cloud HRM Mobile Application
+
+1.ANDROID GUI using HRMMobileService
+2.ANDROID ANT+(sensor communication)
+3.HRMMobileService (cloud service)
+4.HRMWebService (cloud service)
+5.Wearables HRM
+
+http://localhost:8080/HRMobileService/userInfo
+http://localhost:8080/HRMobileService/sport
+
+//WebCurrentHRMImpl
+http://localhost:8080/HRMMobileService/currentHRM
+
+//getUserDetail
+http://localhost:8080/HRMobileService/userInfo/rado2
+
+http://www.java2blog.com/2016/07/spring-restful-client-resttemplate-example.html
+
+hibernate
+RESTful
+Spring
+Android
+ant+
+
+A.BASIC
+1.hibernate-----------------ok
+2.UserService
+-registerUser---------------ok
+-getUserDetail--------------ok
+-deleteUser-----------------ok
+3.SportService
+-setTrainingDataHRM --------ok
+-getTrainingData------------ok
+-getTrainingStatisticList---ok
+https://www.mkyong.com/java/java-object-sorting-example-comparable-and-comparator/
+4.package-------------------ok
+5.git HRMMobileService------ok
+5.design patterns(comparators)
+-factory pattern-----------------ok
+-abstract factory----------------ok
+1.return types - kapitola12......ok
+2.return types - kapitola13......ok
+3.requests     - kapitola17......ok
+--web, rest annotation
+7.web interface
+-controller......................ok
+4.git............................ok
+
+B.WEB
+login user
+-user detail
+-current HRM - mobile/sensor
+-history - DB
+
+-tiles...........................ok
+C.USER DETAIL
+ok--register.......................WEB 1.10.2017
+ok---add jsp, add controller.......2.10.2017
+ok--user list......................WEB
+working--delete hrm records user........WEB 1
+--remove USER account + data.....WEB 2
+--edit user......................WEB 3
+D.CURRENT HRM
+-CURRENT HRM for user.....................WEB 4
+--DB data.................................1
+--simulation start/stop...................1
+--jms/websocket/js.........................2
+E.HISTORY
+-user statistics HRM...............4
+big day HEROKU.....................2
+->h2, postgreSQL...................1
+->heroku...........................1
+......................................user...3
+.......................................hrm...4
+...................................history...4
+F.HEROKU..............................12.11.2017
+=>statistics
+=>current HRM from simulation
+
+X.SECURITY
+-security users..................WEB nedela
+--login
+--change datamodel
+--admin get list users...........WEB piatok
+Y.
+Z.
+Q.
+W.
+===========================================================================================
+technologies
+-heroku, ant+ ble, html5, websocket
+-angular
+-android
+===========================================================================================
+ANDROID 17.12.2017 - 6.3.2018 mobilny internet, mobil
+PROTOTYPE HRM SERVICE, ANDROID GUI(grafy time,hrm ; animacia pri merani)
+
+android project 
+-GUI - 2 mesiace
+-ant+ - 2 mesiace
+
+ANDROID project.......big change - request/response hrmservice
+big day HEROKU................big change - test application - PROTOTYPE
+===========================================================================================
+11.git
+12.android GUI prototype(grafy time,hrm; animacia pri merani)
+
+ANT+ 10.3 - 8.5.2018
+PROTOTYPE ANDROID ANT+
+1.
+2.
+3.git 1.6.2018
+
+
+1.6.2018
+
+SERVICE
+ANDROID HEROKU RESTful SPRING HIBERNATE SERVICE REALTIME HEART RATE MONITOR
+----------------------------------------------
+4.hibernate search - kapitola23..
+triedenie
+
+
+HRMMobileService
+ant+
+RESTful
+Websocket
+Cloud, embeded DB
+-Android 
+--zobrazenie tepu zo sensoru, 
+--ulozenie treningu na cloud, 
+--list treningov z cloudu, 
+--detail treningov z cloudu
+-html5
+--Angular
+--JQuery
+--SpringBoot
+---BLE
+---wearables
+
+
