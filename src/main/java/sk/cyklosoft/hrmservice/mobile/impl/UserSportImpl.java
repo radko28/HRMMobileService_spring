@@ -1,5 +1,8 @@
 package sk.cyklosoft.hrmservice.mobile.impl;
 
+import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,7 +26,10 @@ public class UserSportImpl implements UserSport {
     SportService sportService;
     @Autowired
     UserService userService;
-
+    
+	private static String MAX_TIME = "23:59:59";
+	private static String MIN_TIME = "00:00:00";
+	private static DateTimeFormatter DFT = DateTimeFormat.forPattern("dd-MM-yyyy HH:mm:ss");
 	
 	/*public void startTraining(@PathVariable String username, @PathVariable SportType sportType) {
 		sportService.startTraining(username, sportType);
@@ -46,10 +52,6 @@ public class UserSportImpl implements UserSport {
 	@RequestMapping(value = "/hrmdata/{username}", method = RequestMethod.POST)
 	@ResponseBody
 	public void setTrainingDataHRM(@PathVariable("username") String username, @RequestBody HrmVO hrmVO) {
-		System.out.println(hrmVO.getHrm());
-		System.out.println(hrmVO.getDatetime());
-		System.out.println(hrmVO.getSportType());
-		System.out.println(username);
 		sportService.setTrainingDataHRM(username, hrmVO);
 	}
 
@@ -77,5 +79,18 @@ public class UserSportImpl implements UserSport {
 		return sportAvtivityList;
 	}
 
-
+	@Override
+	@RequestMapping(value = "/hrmdatadel/{username}", method = RequestMethod.POST)
+	@ResponseBody
+	public void deleteTrainingData(@PathVariable("username") String username,
+			@RequestBody HrmVO hrmVO) {
+		DateTime dateFrom = DFT.parseDateTime(hrmVO.getDatetime() + " " + MIN_TIME);
+		DateTime dateTo = null;
+		if(hrmVO.getDatetimeTo() == null) {
+			dateTo = DFT.parseDateTime(dateFrom + " " + MAX_TIME);
+		} else {
+			dateTo = DFT.parseDateTime(hrmVO.getDatetimeTo() + " " + MAX_TIME);
+		}
+		sportService.delete(username,hrmVO.getSportType(), dateFrom, dateTo);
+	}
 }

@@ -15,9 +15,9 @@ import sk.cyklosoft.hrmservice.vo.SportActivity;
 import sk.cyklosoft.hrmservice.vo.SportActivityList;
 
 public class SportServiceTest {
-	private static String URL = "http://localhost:8080/HRMMobileService/sport";
+	private static String URL = "http://localhost:8080/HRMMobileService/mobil/sport";
 	private static String USERNAME = "radko28";
-	private static String USERNAME2 = "radko41";
+	private static String USERNAME2 = "radko42";
 	private RestTemplate restTemplate = null; 
 	private HrmResponseData response = null;	
 	 
@@ -27,6 +27,31 @@ public class SportServiceTest {
 		restTemplate = new RestTemplate();
 	}	
 	 
+	@Test
+	public void deleteTrainingDataOneDate() {
+		String method = "/hrmdatadel/" + USERNAME;
+		DateTime dateTime = new DateTime();
+		HrmVO hrmVO = new HrmVO(); 
+		hrmVO.setSportType(SportType.INDOOR_CYCLING);
+		hrmVO.setDatetime(org.joda.time.format.DateTimeFormat.forPattern("dd-MM-yyyy").print(dateTime));
+		response = restTemplate.postForObject(URL + method, hrmVO, HrmResponseData.class);
+	}
+	
+	@Test
+	public void deleteTrainingDataRangeDate() {
+		String method = "/hrmdatadel/" + USERNAME;
+		DateTime dateTime = new DateTime();
+		HrmVO hrmVO = new HrmVO(); 
+		hrmVO.setSportType(SportType.INDOOR_CYCLING);
+		hrmVO.setDatetime(org.joda.time.format.DateTimeFormat.forPattern("dd-MM-yyyy").print(dateTime));
+		
+		hrmVO.setDatetimeTo(org.joda.time.format.DateTimeFormat.forPattern("dd-MM-yyyy").print(dateTime.plusDays(5)));
+		response = restTemplate.postForObject(URL + method, hrmVO, HrmResponseData.class);
+	}
+
+		
+
+	
 	@Test
 	public void setTrainingDataHRM() {
 		String method = "/hrmdata/" + USERNAME;
@@ -60,7 +85,7 @@ public class SportServiceTest {
 			response = restTemplate.postForObject(URL + method, hrmVO, HrmResponseData.class);
 		}
 		
-		method = "/hrmdata/" + USERNAME2;
+		/*method = "/hrmdata/" + USERNAME2;
 		
 		dateTime = dateTime.plusDays(1);
 		//one training
@@ -87,7 +112,7 @@ public class SportServiceTest {
 			hrmVO.setDatetime(org.joda.time.format.DateTimeFormat.forPattern("dd-MM-yyyy HH:mm:ss").print(dateTime));
 			hrmVO.setHrm(new Random().nextInt((175 - 150) + 1) + 150);
 			response = restTemplate.postForObject(URL + method, hrmVO, HrmResponseData.class);
-		}
+		}*/
 		
 	}	 
 	

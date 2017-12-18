@@ -1,7 +1,6 @@
 package sk.cyklosoft.hrmservice.service;
 
-
-import java.util.List;
+import org.joda.time.DateTime;
 
 import sk.cyklosoft.hrmservice.util.OrderByType;
 import sk.cyklosoft.hrmservice.util.SportType;
@@ -21,8 +20,6 @@ public interface SportService {
 
 	void setTrainingDataHRM(String username, HrmVO hrmVO);
 	
-	void deleteAll(String username);
-	
-	void deleteItems(String username, List<HrmVO> hrmVO);
-	
+	void delete(String username, SportType sportType,
+			DateTime dateFrom, DateTime dateTo);
 }

@@ -99,8 +99,9 @@ public class SportDaoImpl extends CommonDao implements SportDao {
 		hibernateTemplate.execute(new HibernateCallback<Object>() {
 			@Override
 			public Object doInHibernate(Session session) throws HibernateException {
-				Criteria criteria= session.createCriteria(HRMData.class);
-                criteria.add(Restrictions.eq("users.username", username));
+				Criteria criteria = session.createCriteria(HRMData.class,"hrmdata");
+				criteria.createAlias("hrmdata.users", "users");
+				criteria.add(Restrictions.eq("users.username", username));
                 List<HRMData> HRMDataList = criteria.list();
                 for(HRMData hrmData : HRMDataList) {
                 	session.delete(hrmData);
@@ -109,6 +110,28 @@ public class SportDaoImpl extends CommonDao implements SportDao {
 			}
 		});
 
+	}
+
+	@SuppressWarnings("deprecation")
+	@Override
+	public void delete(final String username, final SportType sportType, final DateTime dateFrom,
+			final DateTime dateTo) {
+		
+		hibernateTemplate.execute(new HibernateCallback<Object>() {
+			@Override
+			public Object doInHibernate(Session session) throws HibernateException {
+				Criteria criteria = session.createCriteria(HRMData.class,"hrmdata");
+				criteria.createAlias("hrmdata.users", "users");
+				criteria.add(Restrictions.between("hrmdata.datetime", dateFrom, dateTo));
+				criteria.add(Restrictions.eq("users.username", username));
+				criteria.add(Restrictions.eq("hrmdata.sportActivity", sportType));
+                List<HRMData> HRMDataList = criteria.list();
+                for(HRMData hrmData : HRMDataList) {
+                	session.delete(hrmData);
+                }
+				return null;
+			}
+		});
 	}
 
 }

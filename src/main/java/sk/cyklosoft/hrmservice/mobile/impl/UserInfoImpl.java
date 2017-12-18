@@ -50,7 +50,7 @@ public class UserInfoImpl implements UserInfo {
 	@Override
 	@RequestMapping(value = "/delete", method = RequestMethod.PUT)
     public @ResponseBody void deleteUser(@RequestBody UserVO user)	{
-		 userService.deleteUser(user.getUsername());
+		 userService.deleteUser(user.getUserId());
 		
 	}
 

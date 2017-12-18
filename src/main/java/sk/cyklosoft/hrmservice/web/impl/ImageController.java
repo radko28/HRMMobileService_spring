@@ -23,7 +23,7 @@ import sk.cyklosoft.hrmservice.config.annotation.WebController;
  * 
  */
 @WebController
-@RequestMapping("/images")
+@RequestMapping("/web/userInfo/images")
 public class ImageController {
 
     @Value("${image.directory}")

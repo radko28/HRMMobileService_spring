@@ -1,5 +1,6 @@
 package sk.cyklosoft.hrmservice.dao.impl;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import org.hibernate.Criteria;
@@ -61,13 +62,10 @@ public class UserDaoImpl extends CommonDao implements UserDao {
 
 	@SuppressWarnings("deprecation")
 	@Override
-	public void delete(final String username) {
+	public void delete(final User user) {
 		hibernateTemplate.execute(new HibernateCallback<Object>() {
 			@Override
 			public Object doInHibernate(Session session) throws HibernateException {
-				Criteria criteria= session.createCriteria(User.class);
-                criteria.add(Restrictions.eq("username", username));
-                User user = (User)criteria.uniqueResult();
 				session.delete(user);
 				return null;
 			}
@@ -89,7 +87,21 @@ public class UserDaoImpl extends CommonDao implements UserDao {
        return result;
 	}
 
+    @Override
+    public User findUserById(final Long userId) {
+        @SuppressWarnings({ "unchecked", "deprecation" })
+        User result = hibernateTemplate.execute(new HibernateCallback<User>() {
 
+            @Override
+            public User doInHibernate(Session session) throws HibernateException, SQLException {
+                Criteria criteria = session.createCriteria(User.class);
+                criteria.add(Restrictions.eq("id", userId));
+                return (User)criteria.uniqueResult();
+            }
+        });
+
+        return result;
+    }
 
 
 }

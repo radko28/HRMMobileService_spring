@@ -71,9 +71,10 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void deleteUser(String username) {
-		sportDao.delete(username);
-		userDao.delete(username);
+	public void deleteUser(Long userId) {
+        User user = userDao.findUserById(userId);		
+		sportDao.delete(user.getUsername());
+		userDao.delete(user);
 		
 	}
 

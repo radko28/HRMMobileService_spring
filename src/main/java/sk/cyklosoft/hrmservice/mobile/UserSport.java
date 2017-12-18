@@ -36,4 +36,7 @@ public interface UserSport {
     public @ResponseBody SportActivityList getTrainingStatisticList(@PathVariable("username") String username, @PathVariable("sport_type") String sportType, 
     		@PathVariable("dateFrom") String dateFrom, @PathVariable("dateTo") String dateTo, @PathVariable("orderBy") String orderBy);
 	
+//delete training data
+	@RequestMapping(value = "/hrmdatadel/{username}", method = RequestMethod.POST)
+    public @ResponseBody void deleteTrainingData(@PathVariable("username") String username,@RequestBody HrmVO hrm);
 }

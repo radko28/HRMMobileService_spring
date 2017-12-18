@@ -6,6 +6,7 @@ public class HrmVO {
 
 	private int hrm;
 	private String datetime;
+	private String datetimeTo;
 	private SportType sportType;
 	
 	public int getHrm() {
@@ -25,6 +26,12 @@ public class HrmVO {
 	}
 	public void setSportType(SportType sportType) {
 		this.sportType = sportType;
+	}
+	public String getDatetimeTo() {
+		return datetimeTo;
+	}
+	public void setDatetimeTo(String datetimeTo) {
+		this.datetimeTo = datetimeTo;
 	}
  
 }

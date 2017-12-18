@@ -17,8 +17,10 @@ public interface UserDao {
 //set current sport activity	
 	void updateUser(String username, SportType sportType);
 
-	void delete(String username);
+	void delete(User user);
 
 	List<User> findAllUsers();
+	
+	public User findUserById(Long userId);
 
 }

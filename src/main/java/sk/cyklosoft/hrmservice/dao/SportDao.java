@@ -26,4 +26,7 @@ public interface SportDao {
 	
 	void delete(String username);
 
+	void delete(String username, SportType sportType, DateTime dateFrom,
+			DateTime dateTo);
+
 }

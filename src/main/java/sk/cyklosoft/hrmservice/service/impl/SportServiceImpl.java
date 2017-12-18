@@ -24,6 +24,7 @@ import sk.cyklosoft.hrmservice.vo.HrmVO;
 import sk.cyklosoft.hrmservice.vo.SportActivity;
 import sk.cyklosoft.hrmservice.vo.SportActivityList;
 
+import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
@@ -39,6 +40,8 @@ public class SportServiceImpl implements SportService {
 	UserDao userDao;
 	
 	private static DateTimeFormatter DFT = DateTimeFormat.forPattern("dd-MM-yyyy HH:mm:ss");
+	private static DateTimeFormatter DT = DateTimeFormat.forPattern("dd-MM-yyyy");
+
 	
 	public void startTraining(String username, SportType sportType) {
 		userDao.updateUser(username, sportType);
@@ -61,7 +64,7 @@ public class SportServiceImpl implements SportService {
 				result = new HrmVO();
 				result.setHrm(hrmData.getHrm());
 				result.setSportType(SportType.INDOOR_CYCLING);
-				result.setDatetime(org.joda.time.format.DateTimeFormat.forPattern("dd-MM-yyyy HH:mm:ss").print(hrmData.getDatetime()));
+				result.setDatetime(DFT.print(hrmData.getDatetime()));
 				break;
 		}
 		return result;
@@ -98,7 +101,7 @@ public class SportServiceImpl implements SportService {
 		int hrmCurrent = 0;
 		for(HRMData item : hrmData) {
 			
-			String date = org.joda.time.format.DateTimeFormat.forPattern("dd-MM-yyyy").print(item.getDatetime());
+			String date = DT.print(item.getDatetime());
 			
 //first item			
 			if(sportActivity.getDate() == null) {
@@ -172,15 +175,11 @@ public class SportServiceImpl implements SportService {
 		
 	}
 
-	@Override
-	public void deleteAll(String username) {
-		sportDao.delete(username);
-	}
 
 	@Override
-	public void deleteItems(String username, List<HrmVO> hrmVO) {
-		// TODO Auto-generated method stub
-		
+	public void delete(String username, SportType sportType,
+			DateTime dateFrom, DateTime dateTo) {
+		sportDao.delete(username, sportType, dateFrom, dateTo);
 	}
 
 

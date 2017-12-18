@@ -10,6 +10,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import sk.cyklosoft.hrmservice.config.annotation.WebController;
 import sk.cyklosoft.hrmservice.service.UserService;
@@ -71,14 +72,20 @@ public class WebUserInfoImpl implements WebUserInfo {
     }
     
     @RequestMapping(value = {"admin/deleteUser", "deleteUser"}, method = RequestMethod.GET)
-    public String deleteUser(Model model, Locale locale) {
-        String page = null;
+    public String deleteUser(@RequestParam(value = "userId", required = true)
+    	String userId,Model model, Locale locale) {
+           //delete user
+    	userService.deleteUser(Long.parseLong(userId));
+    	return "redirect:userList";
+    }
+    	
+/*        String page = null;
         page = "userListView";
         userService.deleteUser("username");
         model.addAttribute("userList", userService.findAllUsers());
         model.addAttribute("wholeName", userService.getWholeNameByUsername("AppHelper.getUsername()"));
         return page;
-    }
+    }*/
     
     @RequestMapping(value = {"admin/editUser", "editUser"}, method = RequestMethod.GET)
     public String editUser(Model model, Locale locale) {

@@ -62,16 +62,18 @@ C.USER DETAIL
 ok--register.......................WEB 1.10.2017
 ok---add jsp, add controller.......2.10.2017
 ok--user list......................WEB
-working--delete Items hrm records user......WEB 1
-testing--delete ALL hrm records user........WEB 1
-testing--remove USER account + data.....WEB 2
---edit user......................WEB 3
+OK--remove USER account + data.....WEB 2
+OK--delete ALL hrm records user........WEB 1
+OK--delete Items hrm records user......WEB 1
+working--edit user......................WEB 3
+
 D.CURRENT HRM
 ----------------------------WEBSOCKET D.CURRENT HRM
 -CURRENT HRM for user.....................WEB 4
 --DB data.................................1
 --simulation start/stop Android test interface...................1
 --jms/websocket/js.........................2
+
 E.HISTORY
 individual ladder
 /hrmdatastat/{username}/{sport_type}/{dateFrom}/{dateTo}/{orderBy}
@@ -131,6 +133,7 @@ ANDROID HEROKU RESTful SPRING HIBERNATE SERVICE REALTIME HEART RATE MONITOR
 4.hibernate search - kapitola23..
 triedenie
 /hrmdatastat paging
+delete two users
 
 
 
