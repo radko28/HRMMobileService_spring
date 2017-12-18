@@ -23,5 +23,7 @@ public interface SportDao {
 	List<HRMData> getTrainingStatisticList(String username, SportType sportType, DateTime dateFrom, DateTime dateTo);
 	
 	HRMData getCurrentHRM(String username, SportType sportType);
+	
+	void delete(String username);
 
 }

@@ -11,7 +11,7 @@ import sk.cyklosoft.hrmservice.vo.HrmVO;
 
 import sk.cyklosoft.hrmservice.vo.SportActivityList;
 
-@RequestMapping("/sport")
+@RequestMapping("/mobil/sport")
 public interface UserSport {
 	
 //start training	

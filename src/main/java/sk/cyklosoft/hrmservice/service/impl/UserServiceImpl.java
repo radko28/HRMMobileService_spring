@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import sk.cyklosoft.hrmservice.dao.SportDao;
 import sk.cyklosoft.hrmservice.dao.UserDao;
 import sk.cyklosoft.hrmservice.data.UserResponseData;
 import sk.cyklosoft.hrmservice.model.User;
@@ -22,6 +23,8 @@ public class UserServiceImpl implements UserService {
 	
 	@Autowired
 	UserDao userDao;
+	@Autowired
+	SportDao sportDao;
 
 	public UserResponseData getUserDetail(String username) {
 		User user = userDao.findUserByUsername(username);
@@ -69,6 +72,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public void deleteUser(String username) {
+		sportDao.delete(username);
 		userDao.delete(username);
 		
 	}

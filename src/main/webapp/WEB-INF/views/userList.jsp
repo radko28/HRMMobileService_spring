@@ -18,7 +18,7 @@
 	    <c:forEach items="${userList}" var="user" varStatus="status">
 	   	<tr>
 	   		<td>
-	 			<a href="<c:url value='/admin/userDetail?userId=${user.userId}' />">${user.username}</a>
+	 			<a href="<c:url value='/web/userInfo/admin/userDetail?userId=${user.userId}' />">${user.username}</a>
 	     	</td>
 	     	<td>${user.password}</td>
 			<td>${user.authority}</td>
@@ -28,11 +28,11 @@
 				<input type="checkbox" ${user.enabled ==  true ? 'checked="checked"' : ""} />
 			</td>							
 		  <td>
-	  		<a href="<c:url value='/admin/editUser?userId=${user.userId}' />"><spring:message code="link.edit"/></a> |
-	  		<a href="<c:url value='/admin/deleteUser?userId=${user.userId}' />"><spring:message code="link.delete"/></a>
+	  		<a href="<c:url value='/web/userInfo/admin/editUser?userId=${user.userId}' />"><spring:message code="link.edit"/></a> |
+	  		<a href="<c:url value='/web/userInfo/admin/deleteUser?userId=${user.userId}' />"><spring:message code="link.delete"/></a>
 	  </td>
 			
 		</tr>
    		</c:forEach>
   </table>
-    <p><a href="<c:url value="/admin/register"/>"><spring:message code="link.add" /></a></p>	
+    <p><a href="<c:url value="/web/userInfo/admin/register"/>"><spring:message code="link.add" /></a></p>	

@@ -23,7 +23,7 @@ public class WebUserInfoImpl implements WebUserInfo {
 	@Autowired
 	UserService userService;
 	
-	@RequestMapping(value = {"/","/index"}, method = RequestMethod.GET)
+	@RequestMapping(method = RequestMethod.GET)
     public String getView(Model model, Locale locale) {
 		return "homeView";
     }
@@ -69,6 +69,26 @@ public class WebUserInfoImpl implements WebUserInfo {
         model.addAttribute("wholeName", userService.getWholeNameByUsername("AppHelper.getUsername()"));
         return page;
     }
+    
+    @RequestMapping(value = {"admin/deleteUser", "deleteUser"}, method = RequestMethod.GET)
+    public String deleteUser(Model model, Locale locale) {
+        String page = null;
+        page = "userListView";
+        userService.deleteUser("username");
+        model.addAttribute("userList", userService.findAllUsers());
+        model.addAttribute("wholeName", userService.getWholeNameByUsername("AppHelper.getUsername()"));
+        return page;
+    }
+    
+    @RequestMapping(value = {"admin/editUser", "editUser"}, method = RequestMethod.GET)
+    public String editUser(Model model, Locale locale) {
+        String page = null;
+        page = "editUserView";
+        //model.addAttribute("userList", userService.findAllUsers());
+        model.addAttribute("wholeName", userService.getWholeNameByUsername("AppHelper.getUsername()"));
+        return page;
+    }
+
 
 	
 }

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import sk.cyklosoft.hrmservice.data.UserResponseData;
 import sk.cyklosoft.hrmservice.vo.UserVO;
 
-@RequestMapping("/userInfo")
+@RequestMapping("/mobil/userInfo")
 public interface UserInfo {
 	
 	@RequestMapping(value = "/register", method = RequestMethod.POST)

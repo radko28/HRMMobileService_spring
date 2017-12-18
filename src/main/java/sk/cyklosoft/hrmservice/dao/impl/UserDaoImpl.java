@@ -1,20 +1,18 @@
 package sk.cyklosoft.hrmservice.dao.impl;
 
-import java.sql.SQLException;
 import java.util.List;
 
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
-import org.springframework.orm.hibernate3.HibernateCallback;
+import org.springframework.orm.hibernate4.HibernateCallback;
 import org.springframework.stereotype.Repository;
 
 import sk.cyklosoft.hrmservice.dao.UserDao;
 import sk.cyklosoft.hrmservice.model.User;
 import sk.cyklosoft.hrmservice.util.SportType;
 
-@SuppressWarnings("deprecation")
 @Repository("userDao")
 public class UserDaoImpl extends CommonDao implements UserDao {
 
@@ -22,7 +20,7 @@ public class UserDaoImpl extends CommonDao implements UserDao {
 	public void register(final User user) {
 		hibernateTemplate.execute(new HibernateCallback<Object>() {
 			@Override
-			public Object doInHibernate(Session session) throws HibernateException, SQLException {
+			public Object doInHibernate(Session session) throws HibernateException {
 				session.save(user);
 				return null;
 			}
@@ -36,7 +34,7 @@ public class UserDaoImpl extends CommonDao implements UserDao {
         User result = hibernateTemplate.execute(new HibernateCallback<User>() {
 
             @Override
-            public User doInHibernate(Session session) throws HibernateException, SQLException {
+            public User doInHibernate(Session session) throws HibernateException {
                 Criteria criteria = session.createCriteria(User.class);
                 criteria.add(Restrictions.eq("username", username));
                 return (User)criteria.uniqueResult();
@@ -64,7 +62,7 @@ public class UserDaoImpl extends CommonDao implements UserDao {
 	public void delete(final String username) {
 		hibernateTemplate.execute(new HibernateCallback<Object>() {
 			@Override
-			public Object doInHibernate(Session session) throws HibernateException, SQLException {
+			public Object doInHibernate(Session session) throws HibernateException {
 				Criteria criteria= session.createCriteria(User.class);
                 criteria.add(Restrictions.eq("username", username));
                 User user = (User)criteria.uniqueResult();
@@ -81,7 +79,7 @@ public class UserDaoImpl extends CommonDao implements UserDao {
         List<User> result = hibernateTemplate.execute(new HibernateCallback<List<User>>() {
 
             @Override
-            public List<User> doInHibernate(Session session) throws HibernateException, SQLException {
+            public List<User> doInHibernate(Session session) throws HibernateException {
                 Criteria criteria = session.createCriteria(User.class);
                 return (List<User>)criteria.list();
             }

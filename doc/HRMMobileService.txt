@@ -2,7 +2,6 @@ HRMMobileService
 WEB
 http://localhost:8080/HRMMobileService/
 
-
 Cloud HRM Mobile Application
 
 1.ANDROID GUI using HRMMobileService
@@ -63,17 +62,22 @@ C.USER DETAIL
 ok--register.......................WEB 1.10.2017
 ok---add jsp, add controller.......2.10.2017
 ok--user list......................WEB
-working--delete hrm records user........WEB 1
---remove USER account + data.....WEB 2
+working--delete Items hrm records user......WEB 1
+testing--delete ALL hrm records user........WEB 1
+testing--remove USER account + data.....WEB 2
 --edit user......................WEB 3
 D.CURRENT HRM
+----------------------------WEBSOCKET D.CURRENT HRM
 -CURRENT HRM for user.....................WEB 4
 --DB data.................................1
---simulation start/stop...................1
+--simulation start/stop Android test interface...................1
 --jms/websocket/js.........................2
 E.HISTORY
+individual ladder
+/hrmdatastat/{username}/{sport_type}/{dateFrom}/{dateTo}/{orderBy}
 -user statistics HRM...............4
-big day HEROKU.....................2
+--orderBy(date, hrm), filter(username, sport_type, dateFrom-dateTo)
+----------------------------HEROKU big day HEROKU.....................2
 ->h2, postgreSQL...................1
 ->heroku...........................1
 ......................................user...3
@@ -81,8 +85,9 @@ big day HEROKU.....................2
 ...................................history...4
 F.HEROKU..............................12.11.2017
 =>statistics
-=>current HRM from simulation
-
+=>current HRM from ANDROID simulation
+G.ANDROID simulation
+========================================================================
 X.SECURITY
 -security users..................WEB nedela
 --login
@@ -125,6 +130,8 @@ ANDROID HEROKU RESTful SPRING HIBERNATE SERVICE REALTIME HEART RATE MONITOR
 ----------------------------------------------
 4.hibernate search - kapitola23..
 triedenie
+/hrmdatastat paging
+
 
 
 HRMMobileService

@@ -9,11 +9,12 @@ import org.hibernate.Session;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.joda.time.DateTime;
-import org.springframework.orm.hibernate3.HibernateCallback;
+import org.springframework.orm.hibernate4.HibernateCallback;
 import org.springframework.stereotype.Repository;
 
 import sk.cyklosoft.hrmservice.dao.SportDao;
 import sk.cyklosoft.hrmservice.model.HRMData;
+import sk.cyklosoft.hrmservice.model.User;
 import sk.cyklosoft.hrmservice.util.SportType;
 import sk.cyklosoft.hrmservice.util.TrainType;
 import sk.cyklosoft.hrmservice.vo.SportActivity;
@@ -25,7 +26,7 @@ public class SportDaoImpl extends CommonDao implements SportDao {
 	public void setTrainingDataIndoorCyclo(final HRMData hrm) {
 		hibernateTemplate.execute(new HibernateCallback<Object>() {
 			@Override
-			public Object doInHibernate(Session session) throws HibernateException, SQLException {
+			public Object doInHibernate(Session session) throws HibernateException {
 				session.save(hrm);
 				return null;
 			}
@@ -45,7 +46,7 @@ public class SportDaoImpl extends CommonDao implements SportDao {
 		HRMData result = hibernateTemplate.execute(new HibernateCallback<HRMData>() {
 
 			@Override
-			public HRMData doInHibernate(Session session) throws HibernateException, SQLException {
+			public HRMData doInHibernate(Session session) throws HibernateException {
 				Criteria criteria = session.createCriteria(HRMData.class,"hrmdata");
 				criteria.createAlias("hrmdata.users", "users");
 				criteria.add(Restrictions.eq("users.username", username));
@@ -66,7 +67,7 @@ public class SportDaoImpl extends CommonDao implements SportDao {
 		List<HRMData> result = (List<HRMData>) hibernateTemplate.execute(new HibernateCallback<List<HRMData>>() {
 
 			@Override
-			public List<HRMData> doInHibernate(Session session) throws HibernateException, SQLException {
+			public List<HRMData> doInHibernate(Session session) throws HibernateException {
 				Criteria criteria = session.createCriteria(HRMData.class,"hrmdata");
 				criteria.createAlias("hrmdata.users", "users");
 				criteria.add(Restrictions.between("hrmdata.datetime", dateFrom, dateTo));
@@ -91,6 +92,23 @@ public class SportDaoImpl extends CommonDao implements SportDao {
 	public HRMData getCurrentHRM(String username, SportType sportType) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public void delete(final String username) {
+		hibernateTemplate.execute(new HibernateCallback<Object>() {
+			@Override
+			public Object doInHibernate(Session session) throws HibernateException {
+				Criteria criteria= session.createCriteria(HRMData.class);
+                criteria.add(Restrictions.eq("users.username", username));
+                List<HRMData> HRMDataList = criteria.list();
+                for(HRMData hrmData : HRMDataList) {
+                	session.delete(hrmData);
+                }
+				return null;
+			}
+		});
+
 	}
 
 }

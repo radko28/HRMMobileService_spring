@@ -1,6 +1,8 @@
 package sk.cyklosoft.hrmservice.service;
 
 
+import java.util.List;
+
 import sk.cyklosoft.hrmservice.util.OrderByType;
 import sk.cyklosoft.hrmservice.util.SportType;
 import sk.cyklosoft.hrmservice.vo.HrmVO;
@@ -18,5 +20,9 @@ public interface SportService {
 			OrderByType orderBy);
 
 	void setTrainingDataHRM(String username, HrmVO hrmVO);
+	
+	void deleteAll(String username);
+	
+	void deleteItems(String username, List<HrmVO> hrmVO);
 	
 }

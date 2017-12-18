@@ -2,10 +2,10 @@
     
   <table class="example"  >
 	   <tr>
-		<th><a href="<c:url value="/admin/userList"/>">Users</a></th>		
+		<th><a href="<c:url value="/web/userInfo/admin/userList"/>">Users</a></th>		
 	   </tr>
 	   <tr>
-		<th><a href="<c:url value="/currentHRM"/>">Current HRM</a></th>
+		<th><a href="<c:url value="/web/userInfo/currentHRM"/>">Current HRM</a></th>
 	   </tr>
 	   <tr>
 		<th>History HRM</th>

@@ -23,8 +23,10 @@ import sk.cyklosoft.hrmservice.util.SportType;
 import sk.cyklosoft.hrmservice.vo.HrmVO;
 import sk.cyklosoft.hrmservice.vo.SportActivity;
 import sk.cyklosoft.hrmservice.vo.SportActivityList;
+
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
+
 import sk.cyklosoft.hrmservice.model.User;
 
 @Service("sportService")
@@ -167,6 +169,17 @@ public class SportServiceImpl implements SportService {
 				sportDao.setTrainingDataIndoorCyclo(hrm);
 			break;
 		}
+		
+	}
+
+	@Override
+	public void deleteAll(String username) {
+		sportDao.delete(username);
+	}
+
+	@Override
+	public void deleteItems(String username, List<HrmVO> hrmVO) {
+		// TODO Auto-generated method stub
 		
 	}
 

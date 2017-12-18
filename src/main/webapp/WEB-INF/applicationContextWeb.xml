@@ -21,7 +21,7 @@
 	</context:component-scan>
 
 	<mvc:annotation-driven/>
-	<mvc:view-controller path="/" view-name="index"/>
+	<mvc:view-controller path="/" view-name="homeView"/>
 	
 		
 		<!-- bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
