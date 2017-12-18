@@ -1,6 +1,5 @@
 package sk.cyklosoft.hrmservice.dao.impl;
 
-import java.sql.SQLException;
 import java.util.List;
 
 import org.hibernate.Criteria;
@@ -9,12 +8,11 @@ import org.hibernate.Session;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.joda.time.DateTime;
-import org.springframework.orm.hibernate4.HibernateCallback;
+import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.stereotype.Repository;
 
 import sk.cyklosoft.hrmservice.dao.SportDao;
 import sk.cyklosoft.hrmservice.model.HRMData;
-import sk.cyklosoft.hrmservice.model.User;
 import sk.cyklosoft.hrmservice.util.SportType;
 import sk.cyklosoft.hrmservice.util.TrainType;
 import sk.cyklosoft.hrmservice.vo.SportActivity;
@@ -22,6 +20,7 @@ import sk.cyklosoft.hrmservice.vo.SportActivity;
 @Repository("sportDao")
 public class SportDaoImpl extends CommonDao implements SportDao {
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public void setTrainingDataIndoorCyclo(final HRMData hrm) {
 		hibernateTemplate.execute(new HibernateCallback<Object>() {
@@ -42,7 +41,7 @@ public class SportDaoImpl extends CommonDao implements SportDao {
 
 	@Override
 	public HRMData getTrainingDataIndoorCyclo(final String username, final SportType sportType) {
-		@SuppressWarnings("unchecked")
+		@SuppressWarnings({ "unchecked", "deprecation" })
 		HRMData result = hibernateTemplate.execute(new HibernateCallback<HRMData>() {
 
 			@Override
@@ -63,7 +62,7 @@ public class SportDaoImpl extends CommonDao implements SportDao {
 	@Override
 	public List<HRMData> getTrainingStatisticList(final String username,
 			final SportType sportType, final DateTime dateFrom, final DateTime dateTo) {
-		@SuppressWarnings("unchecked")
+		@SuppressWarnings({ "unchecked", "deprecation" })
 		List<HRMData> result = (List<HRMData>) hibernateTemplate.execute(new HibernateCallback<List<HRMData>>() {
 
 			@Override
@@ -94,6 +93,7 @@ public class SportDaoImpl extends CommonDao implements SportDao {
 		return null;
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public void delete(final String username) {
 		hibernateTemplate.execute(new HibernateCallback<Object>() {

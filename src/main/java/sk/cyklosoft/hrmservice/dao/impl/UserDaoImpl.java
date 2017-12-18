@@ -6,7 +6,7 @@ import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
-import org.springframework.orm.hibernate4.HibernateCallback;
+import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.stereotype.Repository;
 
 import sk.cyklosoft.hrmservice.dao.UserDao;
@@ -16,6 +16,7 @@ import sk.cyklosoft.hrmservice.util.SportType;
 @Repository("userDao")
 public class UserDaoImpl extends CommonDao implements UserDao {
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public void register(final User user) {
 		hibernateTemplate.execute(new HibernateCallback<Object>() {
@@ -30,7 +31,7 @@ public class UserDaoImpl extends CommonDao implements UserDao {
 	
     @Override
     public User findUserByUsername(final String username) {
-        @SuppressWarnings("unchecked")
+        @SuppressWarnings({ "unchecked", "deprecation" })
         User result = hibernateTemplate.execute(new HibernateCallback<User>() {
 
             @Override
@@ -58,6 +59,7 @@ public class UserDaoImpl extends CommonDao implements UserDao {
 		
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public void delete(final String username) {
 		hibernateTemplate.execute(new HibernateCallback<Object>() {
@@ -75,17 +77,16 @@ public class UserDaoImpl extends CommonDao implements UserDao {
 
 	@Override
 	public List<User> findAllUsers() {
-        @SuppressWarnings("unchecked")
+        @SuppressWarnings({ "unchecked", "deprecation" })
         List<User> result = hibernateTemplate.execute(new HibernateCallback<List<User>>() {
 
             @Override
-            public List<User> doInHibernate(Session session) throws HibernateException {
+           public List<User> doInHibernate(Session session) throws HibernateException {
                 Criteria criteria = session.createCriteria(User.class);
                 return (List<User>)criteria.list();
-            }
+         }
         });
-
-        return result;
+       return result;
 	}
 
 
