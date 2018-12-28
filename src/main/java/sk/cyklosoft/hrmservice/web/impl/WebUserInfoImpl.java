@@ -62,7 +62,7 @@ public class WebUserInfoImpl implements WebUserInfo {
         return page;
     }
     
-    @RequestMapping(value = {"admin/userList", "userList"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"admin/userList"}, method = RequestMethod.GET)
     public String getAdminUserList(Model model, Locale locale) {
         String page = null;
         page = "userListView";
@@ -87,14 +87,39 @@ public class WebUserInfoImpl implements WebUserInfo {
         return page;
     }*/
     
+    @RequestMapping(value = {"admin/userDetail","userDetail"}, method = RequestMethod.GET)
+    public String userDetail(@RequestParam(value = "userId", required = true)
+    String userId,Model model, Locale locale) {
+        //    model.addAttribute("user", userService.getUserById(userId));    	
+    	model.addAttribute("wholeName", userService.getWholeNameByUsername("AppHelper.getUsername()"));
+        return "userView";
+    }
+    
     @RequestMapping(value = {"admin/editUser", "editUser"}, method = RequestMethod.GET)
     public String editUser(Model model, Locale locale) {
-        String page = null;
-        page = "editUserView";
         //model.addAttribute("userList", userService.findAllUsers());
         model.addAttribute("wholeName", userService.getWholeNameByUsername("AppHelper.getUsername()"));
+        return "editUserView";
+    }
+    
+    @RequestMapping(value = {"user/editUser","admin/editUser"}, method = RequestMethod.POST)
+    public String updateUser(@ModelAttribute("user")
+    UserVO user, Model model, Locale locale) {
+        String page = null;
+        userService.updateUser(user);
+        if(user.getAuthority().equals(RoleType.ROLE_ADMIN.toString())) {
+            AppHelper.initUser(user.getUsername(), RoleType.ROLE_ADMIN.toString());
+        }         
+        if(AppHelper.hasAdminRole()) {        
+            page = "redirect:userList";
+        } else {
+            page = "redirect:userIndex";
+        }
         return page;
     }
+    
+
+
 
 
 	

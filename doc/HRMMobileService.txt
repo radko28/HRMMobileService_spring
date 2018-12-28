@@ -51,6 +51,9 @@ https://www.mkyong.com/java/java-object-sorting-example-comparable-and-comparato
 -controller......................ok
 4.git............................ok
 
+B.WEB
+-tiles...........................ok
+
 C.USER DETAIL
 ok--register.......................WEB 1.10.2017
 ok---add jsp, add controller.......2.10.2017
@@ -58,7 +61,9 @@ ok--user list......................WEB
 OK--remove USER account + data.....WEB 2
 OK--delete ALL hrm records user........WEB 1
 OK--delete Items hrm records user......WEB 1
+working -user detail.....................WEB 2
 working--edit user......................WEB 3
+
 
 D.CURRENT HRM
 ----------------------------WEBSOCKET D.CURRENT HRM
@@ -66,13 +71,6 @@ D.CURRENT HRM
 --DB data.................................1
 --simulation start/stop Android test interface...................1
 --jms/websocket/js.........................2
-
-B.WEB
-login user
--user detail
--ANDROID current HRM - mobile/sensor
--history - DB 
--tiles...........................ok
 
 E.HISTORY
 individual ladder
@@ -86,6 +84,7 @@ individual ladder
 .......................................hrm...4
 ...................................history...4
 F.HEROKU..............................12.2.2019
+Testy
 =>statistics
 =>current HRM from ANDROID simulation
 G.ANDROID simulation 
@@ -95,6 +94,11 @@ X.SECURITY
 --login
 --change datamodel
 --admin get list users...........WEB piatok
+B.WEB
+login user
+-user detail
+-ANDROID current HRM - mobile/sensor
+-history - DB 
 Y.
 Z.
 Q.
