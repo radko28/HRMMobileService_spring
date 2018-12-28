@@ -8,8 +8,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class HrmResponseData {
 	
 	private HrmVO hrm;
-	private HrmVO hrm2;
-
+	
 	public HrmVO getHrm() {
 		return hrm;
 	}
