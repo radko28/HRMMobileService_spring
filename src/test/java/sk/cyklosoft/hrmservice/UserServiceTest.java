@@ -10,8 +10,7 @@ import sk.cyklosoft.hrmservice.vo.UserVO;
 public class UserServiceTest {
 	
 	private static String URL = "http://localhost:8080/HRMMobileService/userInfo";
-	private static String USERNAME = "radko28";
-	private static String USERNAME2 = "radko41";
+
 	private RestTemplate restTemplate = null; 
 	private UserResponseData response = null;	
 	

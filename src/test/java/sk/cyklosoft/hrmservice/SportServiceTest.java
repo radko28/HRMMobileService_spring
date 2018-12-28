@@ -16,8 +16,7 @@ import sk.cyklosoft.hrmservice.vo.SportActivityList;
 
 public class SportServiceTest {
 	private static String URL = "http://localhost:8080/HRMMobileService/mobil/sport";
-	private static String USERNAME = "radko28";
-	private static String USERNAME2 = "radko42";
+
 	private RestTemplate restTemplate = null; 
 	private HrmResponseData response = null;	
 	 

@@ -51,13 +51,6 @@ https://www.mkyong.com/java/java-object-sorting-example-comparable-and-comparato
 -controller......................ok
 4.git............................ok
 
-B.WEB
-login user
--user detail
--current HRM - mobile/sensor
--history - DB
-
--tiles...........................ok
 C.USER DETAIL
 ok--register.......................WEB 1.10.2017
 ok---add jsp, add controller.......2.10.2017
@@ -74,6 +67,13 @@ D.CURRENT HRM
 --simulation start/stop Android test interface...................1
 --jms/websocket/js.........................2
 
+B.WEB
+login user
+-user detail
+-ANDROID current HRM - mobile/sensor
+-history - DB 
+-tiles...........................ok
+
 E.HISTORY
 individual ladder
 /hrmdatastat/{username}/{sport_type}/{dateFrom}/{dateTo}/{orderBy}
@@ -85,10 +85,10 @@ individual ladder
 ......................................user...3
 .......................................hrm...4
 ...................................history...4
-F.HEROKU..............................12.11.2017
+F.HEROKU..............................12.2.2019
 =>statistics
 =>current HRM from ANDROID simulation
-G.ANDROID simulation
+G.ANDROID simulation 
 ========================================================================
 X.SECURITY
 -security users..................WEB nedela
@@ -105,7 +105,7 @@ technologies
 -angular
 -android
 ===========================================================================================
-ANDROID 17.12.2017 - 6.3.2018 mobilny internet, mobil
+ANDROID 17.12.2018 - 6.3.2019 mobilny internet, mobil
 PROTOTYPE HRM SERVICE, ANDROID GUI(grafy time,hrm ; animacia pri merani)
 
 android project 
@@ -118,14 +118,14 @@ big day HEROKU................big change - test application - PROTOTYPE
 11.git
 12.android GUI prototype(grafy time,hrm; animacia pri merani)
 
-ANT+ 10.3 - 8.5.2018
+ANT+ 10.3 - 8.5.2019
 PROTOTYPE ANDROID ANT+
 1.
 2.
-3.git 1.6.2018
+3.git 1.6.2019
 
 
-1.6.2018
+1.6.2019
 
 SERVICE
 ANDROID HEROKU RESTful SPRING HIBERNATE SERVICE REALTIME HEART RATE MONITOR
