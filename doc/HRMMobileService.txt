@@ -61,8 +61,8 @@ ok--user list......................WEB
 OK--remove USER account + data.....WEB 2
 OK--delete ALL hrm records user........WEB 1
 OK--delete Items hrm records user......WEB 1
-working -user detail.....................WEB 2
-working--edit user......................WEB 3
+working -user detail.....................WEB 2 29.12.2018
+--edit user......................WEB 3
 
 
 D.CURRENT HRM
@@ -71,6 +71,7 @@ D.CURRENT HRM
 --DB data.................................1
 --simulation start/stop Android test interface...................1
 --jms/websocket/js.........................2
+
 
 E.HISTORY
 individual ladder
@@ -83,11 +84,14 @@ individual ladder
 ......................................user...3
 .......................................hrm...4
 ...................................history...4
-F.HEROKU..............................12.2.2019
+F.HEROKU..............................1.2.2019
 Testy
 =>statistics
 =>current HRM from ANDROID simulation
-G.ANDROID simulation 
+1.3.2019 - 1.4.2019
+G.ANDROID workspace
+
+1.4.2019 HEROKU, ANDROID workspace 
 ========================================================================
 X.SECURITY
 -security users..................WEB nedela
@@ -109,12 +113,12 @@ technologies
 -angular
 -android
 ===========================================================================================
-ANDROID 17.12.2018 - 6.3.2019 mobilny internet, mobil
+ANDROID 1.3.2019 - 1.4.2019 mobilny internet, mobil
 PROTOTYPE HRM SERVICE, ANDROID GUI(grafy time,hrm ; animacia pri merani)
 
 android project 
--GUI - 2 mesiace
--ant+ - 2 mesiace
+-GUI - 2 mesiace 1.6.2019
+-ant+ - 2 mesiace 1.8.2019
 
 ANDROID project.......big change - request/response hrmservice
 big day HEROKU................big change - test application - PROTOTYPE
@@ -122,14 +126,14 @@ big day HEROKU................big change - test application - PROTOTYPE
 11.git
 12.android GUI prototype(grafy time,hrm; animacia pri merani)
 
-ANT+ 10.3 - 8.5.2019
+ANT+ 10.6 - 8.8.2019
 PROTOTYPE ANDROID ANT+
 1.
 2.
-3.git 1.6.2019
+3.git 1.9.2019
 
 
-1.6.2019
+1.9.2019
 
 SERVICE
 ANDROID HEROKU RESTful SPRING HIBERNATE SERVICE REALTIME HEART RATE MONITOR

@@ -90,7 +90,7 @@ public class WebUserInfoImpl implements WebUserInfo {
     @RequestMapping(value = {"admin/userDetail","userDetail"}, method = RequestMethod.GET)
     public String userDetail(@RequestParam(value = "userId", required = true)
     String userId,Model model, Locale locale) {
-        //    model.addAttribute("user", userService.getUserById(userId));    	
+        model.addAttribute("user", userService.getUserById(Long.parseLong(userId)));    	
     	model.addAttribute("wholeName", userService.getWholeNameByUsername("AppHelper.getUsername()"));
         return "userView";
     }
@@ -101,8 +101,8 @@ public class WebUserInfoImpl implements WebUserInfo {
         model.addAttribute("wholeName", userService.getWholeNameByUsername("AppHelper.getUsername()"));
         return "editUserView";
     }
-    
-    @RequestMapping(value = {"user/editUser","admin/editUser"}, method = RequestMethod.POST)
+    /*
+    @RequestMapping(value = {"admin/editUser","editUser"}, method = RequestMethod.POST)
     public String updateUser(@ModelAttribute("user")
     UserVO user, Model model, Locale locale) {
         String page = null;
@@ -116,7 +116,7 @@ public class WebUserInfoImpl implements WebUserInfo {
             page = "redirect:userIndex";
         }
         return page;
-    }
+    }*/
     
 
 

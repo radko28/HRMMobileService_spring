@@ -102,6 +102,5 @@ public class UserDaoImpl extends CommonDao implements UserDao {
 
         return result;
     }
-
-
+    
 }

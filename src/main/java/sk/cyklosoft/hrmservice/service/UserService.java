@@ -16,4 +16,5 @@ public interface UserService {
 	public void deleteUser(Long userId);
 	public List<UserVO> findAllUsers();
 	public String getWholeNameByUsername(String string);
+    UserVO getUserById(Long userId);
 }
