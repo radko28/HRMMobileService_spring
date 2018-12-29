@@ -7,22 +7,24 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 
-import sk.cyklosoft.hrmservice.vo.HrmVO;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
+import sk.cyklosoft.hrmservice.util.SportType;
+import sk.cyklosoft.hrmservice.vo.HrmVO;
 import sk.cyklosoft.hrmservice.vo.SportActivityList;
 
 @RequestMapping("/mobil/sport")
 public interface UserSport {
 	
 //start training	
-	/*@RequestMapping(value = "/{username}/{sport_type}", method = RequestMethod.POST)
+	@RequestMapping(value = "/{username}/{sport_type}", method = RequestMethod.POST)
     public @ResponseBody void startTraining(@PathVariable String username, @PathVariable SportType sportType);
-	*/
+	
 //stop training	
-	/*@RequestMapping(value = "/{username}/{sport_type}", method = RequestMethod.PUT)
-	@ResponseStatus(HttpStatus.NO_CONTENT)
+	@RequestMapping(value = "/{username}/{sport_type}", method = RequestMethod.PUT)
+	//@ResponseStatus(HttpStatus.NO_CONTENT)
     public @ResponseBody void stopTraining(@PathVariable String username, @PathVariable SportType sportType);
-	*/
+	
 //set training data
 	@RequestMapping(value = "/hrmdata/{username}", method = RequestMethod.POST)
 	public @ResponseBody void setTrainingDataHRM(@PathVariable("username") String username,@RequestBody HrmVO hrm);

@@ -31,23 +31,13 @@ public class UserSportImpl implements UserSport {
 	private static String MIN_TIME = "00:00:00";
 	private static DateTimeFormatter DFT = DateTimeFormat.forPattern("dd-MM-yyyy HH:mm:ss");
 	
-	/*public void startTraining(@PathVariable String username, @PathVariable SportType sportType) {
+	public void startTraining(@PathVariable String username, @PathVariable SportType sportType) {
 		sportService.startTraining(username, sportType);
-	}*/
-//set training data
-	//@RequestMapping(value = "/datahrm/{username}", method = RequestMethod.POST)
-   // @Override
-    //@RequestMapping(value = "/register", method = RequestMethod.POST)
-	//public @ResponseBody void setTrainingDataHRM(@RequestBody HrmVO hrmVO) {
-	//public void setTrainingDataHRM(@PathVariable("username") String username, @RequestBody HrmVO hrmVO) {
-		//
-    	//
-	//}
+	}
 	
-	/*public void stopTraining(@PathVariable String username, @PathVariable SportType sportType) {
+	public void stopTraining(@PathVariable String username, @PathVariable SportType sportType) {
 		sportService.stopTraining(username);
 	}
-	*/
 	@Override
 	@RequestMapping(value = "/hrmdata/{username}", method = RequestMethod.POST)
 	@ResponseBody

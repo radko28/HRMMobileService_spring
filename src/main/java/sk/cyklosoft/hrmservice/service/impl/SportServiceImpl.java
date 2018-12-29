@@ -2,7 +2,6 @@ package sk.cyklosoft.hrmservice.service.impl;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,10 +9,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import sk.cyklosoft.hrmservice.comparator.ComparatorFactory;
-import sk.cyklosoft.hrmservice.comparator.HrmAvgAscComparator;
-import sk.cyklosoft.hrmservice.comparator.HrmAvgDescComparator;
-import sk.cyklosoft.hrmservice.comparator.HrmMaxAscComparator;
-import sk.cyklosoft.hrmservice.comparator.HrmMaxDescComparator;
 import sk.cyklosoft.hrmservice.dao.SportDao;
 import sk.cyklosoft.hrmservice.dao.UserDao;
 import sk.cyklosoft.hrmservice.model.HRMData;
@@ -174,7 +169,6 @@ public class SportServiceImpl implements SportService {
 		}
 		
 	}
-
 
 	@Override
 	public void delete(String username, SportType sportType,

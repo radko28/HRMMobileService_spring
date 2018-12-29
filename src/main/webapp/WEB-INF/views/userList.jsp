@@ -29,7 +29,8 @@
 			</td>							
 		  <td>
 	  		<a href="<c:url value='/web/userInfo/admin/editUser?userId=${user.userId}' />"><spring:message code="link.edit"/></a> |
-	  		<a href="<c:url value='/web/userInfo/admin/deleteUser?userId=${user.userId}' />"><spring:message code="link.delete"/></a>
+	  		<a href="<c:url value='/web/userInfo/admin/deleteUser?userId=${user.userId}' />"><spring:message code="link.delete"/></a> |
+	  		<a href="<c:url value='/web/userInfo/currentHRM?userId=${user.userId}' />"><spring:message code="link.currentHRM"/></a>
 	  </td>
 			
 		</tr>

@@ -64,13 +64,14 @@ OK--delete Items hrm records user......WEB 1
 working -user detail.....................WEB 1 30.12.2018
 --edit user......................WEB 3 6.1.2019
 
-
 D.CURRENT HRM..............................1.3.2019
-----------------------------WEBSOCKET D.CURRENT HRM
+view in WEB, sledovanie ineho uzivatela
 -CURRENT HRM for user.....................WEB 4
+-useList -> currentHRM 
 --DB data.................................1
 --simulation start/stop Android test interface...................1
---jms/websocket/js.........................2
+--jms/websocket/js.........................WEB 2
+--priznak stop/start
 
 
 E.HISTORY..............................1.5.2019
