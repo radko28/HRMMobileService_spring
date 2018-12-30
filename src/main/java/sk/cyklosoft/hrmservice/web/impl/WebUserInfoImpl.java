@@ -7,6 +7,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import sk.cyklosoft.hrmservice.config.annotation.WebController;
 import sk.cyklosoft.hrmservice.service.UserService;
+import sk.cyklosoft.hrmservice.validation.PasswordValidator;
 import sk.cyklosoft.hrmservice.vo.UserVO;
 import sk.cyklosoft.hrmservice.web.WebUserInfo;
 
@@ -74,7 +76,6 @@ public class WebUserInfoImpl implements WebUserInfo {
     @RequestMapping(value = {"admin/deleteUser", "deleteUser"}, method = RequestMethod.GET)
     public String deleteUser(@RequestParam(value = "userId", required = true)
     	String userId,Model model, Locale locale) {
-           //delete user
     	userService.deleteUser(Long.parseLong(userId));
     	return "redirect:userList";
     }
@@ -89,38 +90,49 @@ public class WebUserInfoImpl implements WebUserInfo {
     
     @RequestMapping(value = {"admin/userDetail","userDetail"}, method = RequestMethod.GET)
     public String userDetail(@RequestParam(value = "userId", required = true)
-    String userId,Model model, Locale locale) {
+    String userId, Model model, Locale locale) {
         model.addAttribute("user", userService.getUserById(Long.parseLong(userId)));    	
     	model.addAttribute("wholeName", userService.getWholeNameByUsername("AppHelper.getUsername()"));
         return "userView";
     }
     
     @RequestMapping(value = {"admin/editUser", "editUser"}, method = RequestMethod.GET)
-    public String editUser(Model model, Locale locale) {
-        //model.addAttribute("userList", userService.findAllUsers());
+    public String editUser(@RequestParam(value = "userId", required = true)
+    String userId, Model model, Locale locale) {
+    	model.addAttribute("user", userService.getUserById(Long.parseLong(userId)));
         model.addAttribute("wholeName", userService.getWholeNameByUsername("AppHelper.getUsername()"));
         return "editUserView";
     }
-    /*
-    @RequestMapping(value = {"admin/editUser","editUser"}, method = RequestMethod.POST)
+    
+    @RequestMapping(value = {"admin/editUser","editUser"}, params="action", method = RequestMethod.POST)
     public String updateUser(@ModelAttribute("user")
-    UserVO user, Model model, Locale locale) {
+    UserVO user, Model model, Locale locale, BindingResult result, Errors errors) {
+    	
         String page = null;
-        userService.updateUser(user);
-        if(user.getAuthority().equals(RoleType.ROLE_ADMIN.toString())) {
-            AppHelper.initUser(user.getUsername(), RoleType.ROLE_ADMIN.toString());
-        }         
-        if(AppHelper.hasAdminRole()) {        
-            page = "redirect:userList";
+        
+    	PasswordValidator passwordValidator = new PasswordValidator();
+        passwordValidator.validate(user, errors);
+        if(result.hasErrors()) {
+        	model.addAttribute("user", user);
+            model.addAttribute("wholeName", userService.getWholeNameByUsername("AppHelper.getUsername()"));
+            page = "editUserView";
         } else {
-            page = "redirect:userIndex";
+        	userService.updateUser(user);
+        /*if(user.getAuthority().equals(RoleType.ROLE_ADMIN.toString())) {
+            AppHelper.initUser(user.getUsername(), RoleType.ROLE_ADMIN.toString());
+        } */        
+        //if(AppHelper.hasAdminRole()) {        
+            page = "redirect:userList";
+        //} else {
+        	//page = "redirect:userIndex";
+       // }
         }
         return page;
-    }*/
+    }
     
+    @RequestMapping(value = {"admin/editUser","editUser"}, params="cancel", method = RequestMethod.POST)
+    public String updateUserBack() {
+    	return "redirect:userList";
+    }
 
-
-
-
-	
 }

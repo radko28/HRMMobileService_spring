@@ -22,4 +22,6 @@ public interface UserDao {
 	List<User> findAllUsers();
 	
 	User findUserById(Long userId);
+
+	void update(User user);
 }

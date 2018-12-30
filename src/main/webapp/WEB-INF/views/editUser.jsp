@@ -12,8 +12,8 @@
 	<fieldset>
     <table style="padding-left: 10px; padding-right: 10px;">
     	<tr>
-    		<td><form:label	for="username" path="username"><spring:message code="users.table.username"/> *</form:label></td>
-			<td style="padding-right: 10px;"><form:input path="username" /></td>
+    		<td><form:label	for="username" path="username"><spring:message code="users.table.username"/></form:label></td>
+			<td style="padding-right: 10px;"><form:input path="username" readonly="true" cssStyle="background-color: #e5e5e5; border-color: #ababab;"/></td>
 			<td><form:label	for="firstname" path="firstname"><spring:message code="users.table.firstname"/> *</form:label></td>
 			<td><form:input path="firstname" /></td>
 		</tr>
@@ -35,7 +35,7 @@
     		<td><label for="confirm"><spring:message code="confirm.password"/> *</label></td>
 			<td><form:password path="confirm"/></td>
 			<td>Enabled</td>
-			<td ><form:checkbox path="enabledValue" value = "checked" checked="${enabledValue}" /></td>
+			<td ><form:checkbox path="enabled" value = "checked" checked="${enabled}" /></td>
 		</tr>
 		<tr>
 			<td colspan="2"><form:errors path="confirm" cssClass = "errortext" /></td>
@@ -46,7 +46,7 @@
 		</tr>
     	<tr>
     		<td colspan="2" style="text-align: right;"><input type="submit" name="action" value="<spring:message code="button.save" />"/></td>
-		 	<td colspan="2"><input type="submit" name="_cancel" value="<spring:message code="link.back" />"/></td>
+		 	<td colspan="2"><input type="submit" name="cancel" value="<spring:message code="link.back" />"/></td>
 		</tr>
 	</table>
     </fieldset>

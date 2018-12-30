@@ -102,5 +102,18 @@ public class UserDaoImpl extends CommonDao implements UserDao {
 
         return result;
     }
+
+	@SuppressWarnings("deprecation")
+    @Override
+    public void update(final User user) {
+        hibernateTemplate.execute(new HibernateCallback<Object>() {
+            @Override
+            public Object doInHibernate(Session session) throws HibernateException, SQLException {
+                session.update(user);
+                return null;
+            }
+        });
+    }
+
     
 }

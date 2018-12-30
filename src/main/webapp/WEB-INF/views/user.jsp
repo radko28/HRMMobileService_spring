@@ -12,9 +12,7 @@
 
   <form:form commandName="user" method="post">
 	<form:hidden path="userId" />
-	<%-- <form:hidden path="created"/> --%>
     <form:hidden path="enabled"/>
-
     <table>
     	<tr>
 			<td><form:label	for="firstname" path="firstname"><spring:message code="users.table.firstname"/> *</form:label></td>
@@ -32,31 +30,10 @@
 		</tr>
 		<tr>
 			<td colspan="2"> <form:errors path="lastname" cssClass = "errortext" /></td>
-			<td colspan="2"> <form:errors path="oldpassword" cssClass = "errortext" /></td>
-		</tr>
-    	<tr>
-			<td></td>
-			<td></td>
-    		<td><label for="password"><spring:message code="password.new"/> *</label></td>
-			<td><form:password path="password" /></td>
-		</tr><tr>
-		<tr>
-			<td colspan="2"><%-- <form:errors path="birthdateString" cssClass = "errortext" /> --%></td>
-			<td colspan="2"><form:errors path="password" cssClass = "errortext" /></td>
-		</tr>
-    	<tr>
-    		<td></td>
-    		<td style="padding-right: 20px;"><input type="submit" name="changeProfile" value="<spring:message code="button.changeProfile" />"/></td>
-    		<td><label for="confirm"><spring:message code="password.new.confirm" /> *</label></td>
-			<td><form:password path="confirm" /></td>
-		</tr>
-		<tr>
-			<td colspan="3"></td>
-			<td><input type="submit" name="changePassword" value="<spring:message code="button.changePassword" />"/></td>
+			<td colspan="2"></td>
 		</tr>
 	</table>
-	
   </form:form>
-     <p><a href="<c:url value='/user/editUser?userId=${user.userId}' />"><spring:message code="link.edit"/></a></p>	
+     <p><a href="<c:url value='/web/userInfo/editUser?userId=${user.userId}' />"><spring:message code="link.edit"/></a></p>	
 </body>
 </html>

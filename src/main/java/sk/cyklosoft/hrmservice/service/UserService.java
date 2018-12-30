@@ -10,11 +10,11 @@ import sk.cyklosoft.hrmservice.vo.UserVO;
 
 
 public interface UserService {
-	public @ResponseBody UserResponseData getUserDetail(@PathVariable String username);
-
-	public void registerUser(UserVO user);
-	public void deleteUser(Long userId);
-	public List<UserVO> findAllUsers();
-	public String getWholeNameByUsername(String string);
+	@ResponseBody UserResponseData getUserDetail(@PathVariable String username);
+	void registerUser(UserVO user);
+	void deleteUser(Long userId);
+	List<UserVO> findAllUsers();
+	String getWholeNameByUsername(String string);
     UserVO getUserById(Long userId);
+	void updateUser(UserVO user);
 }

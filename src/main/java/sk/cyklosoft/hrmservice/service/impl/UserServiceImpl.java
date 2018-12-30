@@ -81,8 +81,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public List<UserVO> findAllUsers() {
         List<User> userList = userDao.findAllUsers();
-        // copy
-         List<UserVO> result = new ArrayList<UserVO>();
+        List<UserVO> result = new ArrayList<UserVO>();
         for (User user : userList) {
             result.add(user.copy());
         }
@@ -101,6 +100,22 @@ public class UserServiceImpl implements UserService {
         UserVO result = user.copy();
         return result;
     }
+
+    @Override
+    public void updateUser(UserVO userVO) {
+        User user = userDao.findUserById(userVO.getUserId());
+        //Authority authority = user.getAuthorities();
+        //authority.setAuthority(userVO.getAuthorityType());
+        //authority.setUsername(userVO.getUsername());
+        //authorityDao.update(authority);
+        //user.setAuthorities(authority);
+        //user.setEnabled(userVO.isEnabled());
+        user.setFirstname(userVO.getFirstname());
+        user.setLastname(userVO.getLastname());
+        user.setPassword(userVO.getPassword());
+        userDao.update(user);
+    }
+
 }
 
 
